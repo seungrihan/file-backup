@@ -1,14 +1,11 @@
 import os
+from .move import get_current_directory_data
 
 def delete_oldest_backup_file(current_directory):
     # 현재 디렉토리의 모든 파일과 폴더를 가져온다.
-    contents = os.listdir(current_directory)
     file_count = 2
-
-    # "backup_YYYYMMDD.zip" 형식과 일치하는 폴더만 필터링한다.
-    backup_files = [
-        files for files in contents if files.startswith("backup_") and files.endswith(".zip")
-    ]
+    
+    backup_files = get_current_directory_data(current_directory)
 
     # 폴더 이름을 기준으로 오름차순으로 정렬한다.
     sorted_files = sorted(backup_files)

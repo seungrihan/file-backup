@@ -2,14 +2,20 @@ import os
 import subprocess
 
 
-def move_zip_files(current_directory, destination_directory):
+def get_current_directory_data(currnent_directory):
     # 현재 디렉토리의 모든 파일과 폴더를 가져온다.
-    contents = os.listdir(current_directory)
+    contents = os.listdir(currnent_directory)
 
     # "backup_YYYYMMDD.zip" 형식과 일치하는 폴더만 필터링한다.
     backup_files = [
         files for files in contents if files.startswith("backup_") and files.endswith(".zip")
     ]
+
+    return backup_files
+
+
+def move_zip_files(current_directory, destination_directory):
+    backup_files = get_current_directory_data(current_directory)
 
     # Google Drive에 backup_YYYYMMDD.zip 파일을 업로드한다.
     for file in backup_files:
