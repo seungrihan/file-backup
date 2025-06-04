@@ -2,9 +2,9 @@ import os
 import subprocess
 
 
-def get_current_directory_data(currnent_directory):
+def get_current_directory_data(current_directory):
     # 현재 디렉토리의 모든 파일과 폴더를 가져온다.
-    contents = os.listdir(currnent_directory)
+    contents = os.listdir(current_directory)
 
     # "backup_YYYYMMDD.zip" 형식과 일치하는 폴더만 필터링한다.
     backup_files = [
