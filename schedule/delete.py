@@ -2,7 +2,7 @@ import os
 from .move import get_current_directory_data
 
 def delete_oldest_backup_file(current_directory):
-    # 현재 디렉토리의 모든 파일과 폴더를 가져온다.
+    # 현재 디렉토리에서 백업 ZIP 파일들을 가져온다.
     file_count = 2
     
     backup_files = get_current_directory_data(current_directory)
@@ -14,8 +14,8 @@ def delete_oldest_backup_file(current_directory):
     if len(sorted_files) > file_count:
         oldest_file = sorted_files[0]
         oldest_file_path = os.path.join(current_directory, oldest_file)
-        print(f"Deleted the oldest folder: {oldest_file}")
-        print(f"Deleted the oldest folder: {oldest_file_path}")
+        print(f"Deleted the oldest file: {oldest_file}")
+        print(f"Deleted the oldest file: {oldest_file_path}")
         os.remove(oldest_file_path)
     else:
         print("No folders to delete.")
